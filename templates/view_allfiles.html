@@ -1,0 +1,46 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+  <style>
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+<body>
+  <h2 style="text-align:center;">Data Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>fID</th>
+        <th>filename</th>
+        <th>created_at</th>
+        <th>View </th>
+        <th>Download</th>
+        <th>Delete</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in files %}
+      <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td><a href='{{ url_for("view_file", fid=i[0]) }}'>View file</a></td>
+        <td><a href='{{ url_for("download_file", fid=i[0]) }}'>Download file</a></td>
+        <td><a href='{{ url_for("delete_file", fid=i[0]) }}'>Delete file</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+</body>
+{% endblock %}

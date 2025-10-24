@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    :root{
+      --bg1: #ff7eb3;
+      --bg2: #65d6ff;
+      --accent: #7c3aed;
+      --accent-2: #06b6d4;
+      --card-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --text: #ffffffee;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      background-size: 400% 400%;
+      animation: snmsGradient 12s ease infinite;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+      box-sizing:border-box;
+    }
+
+    @keyframes snmsGradient{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    form{display:flex;flex-direction:column;gap:12px;max-width:420px;width:100%}
+
+    input[type=text], input[type=email], input[type=password]{
+      width:100%;
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:12px 14px;border-radius:8px;color:var(--text);
+      outline:none;transition:box-shadow .18s ease, transform .06s ease, border-color .12s ease;
+    }
+
+    input::placeholder{color:rgba(255,255,255,0.75)}
+
+    input:focus{
+      box-shadow: 0 8px 30px rgba(2,6,23,0.45), 0 0 18px rgba(124,58,237,0.18);
+      transform: translateY(-1px);
+      border-color: rgba(124,58,237,0.9);
+    }
+
+    button{align-self:flex-start;background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,0.35);transition:transform .12s ease,opacity .12s ease}
+    button:active{transform:translateY(1px)}
+
+    .flashes{list-style:none;padding:0;margin:0 0 12px 0;max-width:420px}
+    .flashes li{background:rgba(0,0,0,0.18);padding:8px 10px;border-radius:8px;margin-bottom:8px;color:#fff}
+
+    @media (max-width:480px){
+      body{padding:12px}
+      input[type=text], input[type=email], input[type=password]{padding:10px}
+    }
+  </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<body>
+    <center>
+    <form method="post">
+        <h1>Register</h1>
+        <input type="text" name="username" placeholder="username" required/><br/>
+        <input type="email" name="usermail" placeholder="mail" required/><br/>
+        <input type="password" name="password" placeholder="password" required/><br/>
+        <button>Submit</button>
+    </form>
+  </center>
+</body>
+</html>

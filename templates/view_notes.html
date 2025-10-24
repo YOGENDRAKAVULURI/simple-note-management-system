@@ -1,0 +1,26 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    <style>
+        .d{
+            border: 2px double green;
+            border-radius: 10px;
+            margin-top: 2%;
+            margin-left: 32%;
+            margin-right: 32%;
+            padding: 10px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="d">
+            Created At: {{ note[3] }} <br><br>
+            <label for="">Enter Title: </label> <br>
+            <input type="text" name="title" readonly value="{{ note[1] }}"><br><br>
+            <label>Description: </label><br>
+           <textarea name="description" id="" readonly>{{ note[2] }}</textarea><br><br>
+        </div>
+    </center>
+</body>
+{% endblock %}

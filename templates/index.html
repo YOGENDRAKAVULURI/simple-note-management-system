@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --bg1: #ff7eb3;
+            --bg2: #65d6ff;
+            --accent: #7c3aed;
+            --accent-2: #06b6d4;
+            --text: #ffffffee;
+        }
+
+        html,body{height:100%;}
+        body{
+            margin:0;padding:0;box-sizing:border-box;min-height:100%;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            background: linear-gradient(120deg, var(--bg1), var(--bg2));
+            background-size:400% 400%;animation:snmsGradient 12s ease infinite;color:var(--text);
+            display:flex;align-items:center;justify-content:center;padding:24px;
+        }
+
+        @keyframes snmsGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+        h1{color:var(--text);text-align:center;text-shadow:0 6px 18px rgba(0,0,0,0.25);margin:0 0 18px}
+
+        a{display:inline-block}
+
+        button{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;padding:12px 18px;border-radius:10px;cursor:pointer;margin:6px;box-shadow:0 10px 30px rgba(2,6,23,0.4);transition:transform .12s ease}
+        button:active{transform:translateY(1px)}
+
+        @media (max-width:480px){body{padding:12px}button{width:100%;max-width:320px}}
+    </style>
+</head>
+<body>
+    <center><h1>Welcome to Simple Note app Management</h1>
+    <a href="{{url_for('register')}}"><button>SIGN UP</button></a><br/><br/>
+    <a href="{{url_for('userlogin')}}"><button>SIGN IN</button></a></center>
+</body>
+</html>
